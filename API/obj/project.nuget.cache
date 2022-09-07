@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "cMmVjWZTDOuMQInt6DenrERSQRdCvdC6Aq3sh5UQWMtANpgb/raayGGI3JBDceQtEsOzaes09j8WyW6sstxA7A==",
+  "dgSpecHash": "ccBqwjOsSeBWiZYU/J/aaQ2EcdYFcFgw6F+RJkFlVUcFlH4r4V1rN6JywT1qQDWBIqqu3rVZgEH3NUBCRx7Enw==",
   "success": true,
-  "projectFilePath": "e:\\Projects\\Repositories\\GitHub\\Dabble\\API\\API.csproj",
+  "projectFilePath": "E:\\Projects\\Repositories\\GitHub\\Dabble\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\sadia\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.8\\microsoft.data.sqlite.core.6.0.8.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.8\\microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.8\\microsoft.entityframeworkcore.abstractions.6.0.8.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.8\\microsoft.entityframeworkcore.analyzers.6.0.8.nupkg.sha512",
+    "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.8\\microsoft.entityframeworkcore.design.6.0.8.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.8\\microsoft.entityframeworkcore.relational.6.0.8.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\6.0.8\\microsoft.entityframeworkcore.sqlite.6.0.8.nupkg.sha512",
     "C:\\Users\\sadia\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\6.0.8\\microsoft.entityframeworkcore.sqlite.core.6.0.8.nupkg.sha512",
