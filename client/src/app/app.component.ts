@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit{
   title = 'Dabble App';
-  user: any;
+  users: any;
 
   constructor(private http: HttpClient){}
 
   ngOnInit(): void {
     this.http.get('https://localhost:7183/api/users').subscribe({
-      next: response => this.user = response,
+      next: response => this.users = response,
       error: error => console.log(error),
       complete: () => console.log("Request has completed")
     });
