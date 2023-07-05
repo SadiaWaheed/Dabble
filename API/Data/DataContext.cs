@@ -9,6 +9,7 @@ namespace API.Data
         {
 
         }
-        public DbSet<AppUser> Users { get; set; }
+        public DbSet<AppUser> Users { get; set; } 
+        // no photos dbset because they are always going to be used by users and not spereately. Photos table will be included in the migration.
     }
 }
