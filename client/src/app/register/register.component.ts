@@ -33,21 +33,31 @@ export class RegisterComponent implements OnInit {
   initializeForm() {
     this.registerForm = this.fb.group({
       userName: ['', Validators.required],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(8),
-      ]],
-      confirmPassword:[ '', [Validators.required, this.matchValues('password')]],
+      gender: ['male'],
+      knownAs: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
+      password: [
+        '',
+        [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
+      ],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchValues('password')],
+      ],
     });
     this.registerForm.controls['password'].valueChanges.subscribe({
-      next: () => this.registerForm.controls['confirmPassword'].updateValueAndValidity()
-    })
+      next: () =>
+        this.registerForm.controls['confirmPassword'].updateValueAndValidity(),
+    });
   }
 
   matchValues(matchTo: string): ValidatorFn {
     return (control: AbstractControl) => {
-      return control.value === control.parent?.get(matchTo)?.value ? null : {notMatching: true}
+      return control.value === control.parent?.get(matchTo)?.value
+        ? null
+        : { notMatching: true };
     };
   }
 
