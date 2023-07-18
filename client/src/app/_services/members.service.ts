@@ -1,40 +1,58 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/members';
 import { publishFacade } from '@angular/compiler';
 import { map, of } from 'rxjs';
+import { PaginationResult } from '../_models/pagination';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MembersService {
   baseUrl = environment.apiUrl;
-  members: Member[] =[];
+  members: Member[] = [];
+  paginatedResult: PaginationResult<Member[]> = new PaginationResult<
+    Member[]
+  >();
 
   constructor(private http: HttpClient) {}
 
-  getMembers() {
-    if(this.members.length>0) return of(this.members);
-    return this.http.get<Member[]>(this.baseUrl + 'users').pipe(
-      map(members => {
-        this.members = members;
-        return members;
-      })
-    );
+  getMembers(page?: number, itemsPerPage?: number) {
+    let params = new HttpParams();
+
+    if (page && itemsPerPage) {
+      params = params.append('pageNumber', page);
+      params = params.append('PageSize', itemsPerPage);
+    }
+
+    return this.http
+      .get<Member[]>(this.baseUrl + 'users', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          if(response.body){
+            this.paginatedResult.result = response.body;
+          }
+          const pagination = response.headers.get('Pagination');
+          if(pagination){
+            this.paginatedResult.pagination = JSON.parse(pagination);
+          }
+          return this.paginatedResult;
+        })
+      );
   }
 
   getMember(username: string) {
-    const member = this.members.find(x => x.userName == username);
-    if(member) return of(member);
+    const member = this.members.find((x) => x.userName == username);
+    if (member) return of(member);
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
-  
-  updateMember(member: Member){
-    return this.http.put(this.baseUrl+'users', member).pipe(
+
+  updateMember(member: Member) {
+    return this.http.put(this.baseUrl + 'users', member).pipe(
       map(() => {
         const index = this.members.indexOf(member);
-        this.members[index] = {...this.members[index], ...member}
+        this.members[index] = { ...this.members[index], ...member };
       })
     );
   }
@@ -43,8 +61,7 @@ export class MembersService {
     return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
 
-  deletePhoto(photoId: number){
+  deletePhoto(photoId: number) {
     return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
   }
-
 }
