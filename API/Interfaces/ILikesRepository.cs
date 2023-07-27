@@ -1,6 +1,5 @@
 using API.DTOs;
 using API.Entities;
-using Newtonsoft.Json.Linq;
 
 namespace API.Interfaces
 {
