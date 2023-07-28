@@ -32,7 +32,7 @@ export class MessagesComponent implements OnInit {
       });
   }
 
-  pageChanges(event: any) {
+  pageChanged(event: any) {
     if (this.pageNumber != event.page) {
       this.pageNumber = event.page;
       this.loadMessages();
