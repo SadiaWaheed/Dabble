@@ -14,6 +14,7 @@ namespace API.Services
         private readonly UserManager<AppUser> _userManager;
         public TokenService(IConfiguration config,UserManager<AppUser> userManager)
         {
+            _userManager = userManager;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
         public async Task<string> CreateToken(AppUser user)
