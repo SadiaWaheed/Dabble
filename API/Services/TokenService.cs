@@ -27,7 +27,7 @@ namespace API.Services
 
             var roles = await _userManager.GetRolesAsync(user);
 
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(roles.Select(roles => new Claim(ClaimTypes.Role, roles)));
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
