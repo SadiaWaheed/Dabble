@@ -21,6 +21,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(corsPolicyBuilder => corsPolicyBuilder
              .AllowAnyHeader()
              .AllowAnyMethod()
+             .AllowCredentials()
              .WithOrigins("https://localhost:4200"));
 
 app.UseAuthentication();
